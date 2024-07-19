@@ -16,6 +16,8 @@ import MenuItem from "@mui/material/MenuItem";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
+import Pagination from "@mui/material/Pagination";
+import Stack from "@mui/material/Stack";
 
 // Third-party Imports
 import classnames from "classnames";
@@ -31,7 +33,6 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: "auto",
   bgcolor: "background.paper",
   border: "2px solid #000",
   boxShadow: 24,
@@ -50,6 +51,7 @@ const AddAction = ({ resData }) => {
   const [url, setUrl] = useState("");
   const [statusOrder, setStatusOrder] = useState(false);
   const [statusFavor, setStatusFavor] = useState(false);
+  const [statusCart, setStatusCart] = useState(false);
 
   // Hooks
   const isBelowMdScreen = useMediaQuery((theme) =>
@@ -86,7 +88,7 @@ const AddAction = ({ resData }) => {
                     </div>
                     <div>
                       <Typography color="text.primary">
-                        This is field quotation
+                        This is field of quotations
                       </Typography>
                     </div>
                   </div>
@@ -163,6 +165,15 @@ const AddAction = ({ resData }) => {
                 )}
               </Button>
             </Grid>
+            <Grid
+              item
+              xs={12}
+              style={{ display: "flex", justifyContent: "flex-end" }}
+            >
+              <Stack spacing={2}>
+                <Pagination count={10} color="primary" />
+              </Stack>
+            </Grid>
             {resData.map((item, index) => (
               <Grid item xs={3} key={index}>
                 <Card sx={12}>
@@ -186,6 +197,15 @@ const AddAction = ({ resData }) => {
                               <i className="tabler-heart" />
                             ) : (
                               <i className="tabler-heart-filled" />
+                            )}
+                          </Button>
+                          <Button
+                            onClick={() => setStatusCart((prev) => !prev)}
+                          >
+                            {statusCart ? (
+                              <i className="tabler-shopping-cart" />
+                            ) : (
+                              <i className="tabler-shopping-cart-filled" />
                             )}
                           </Button>
                         </Typography>
@@ -219,7 +239,15 @@ const AddAction = ({ resData }) => {
                 </Card>
               </Grid>
             ))}
-
+            <Grid
+              item
+              xs={12}
+              style={{ display: "flex", justifyContent: "flex-end" }}
+            >
+              <Stack spacing={2}>
+                <Pagination count={10} color="primary" />
+              </Stack>
+            </Grid>
             <Grid item xs={12}>
               <Divider className="border-dashed" />
             </Grid>
@@ -252,20 +280,23 @@ const AddAction = ({ resData }) => {
         aria-labelledby="child-modal-title"
         aria-describedby="child-modal-description"
       >
-        <Box sx={{ ...style, width: 600 }}>
+        <Box sx={{ ...style, width: 1200 }}>
           <Grid
             container
             spacing={6}
             style={{ justifyContent: "center", alignItems: "center" }}
           >
-            <Grid item xs={6}>
+            <Grid
+              item
+              xs={6}
+              style={{
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
               <img
                 src={url}
                 className="object-contain bs-[300px] md:bs-[350px] lg:bs-[400px] mbs-10 md:mbs-14 lg:mbs-20"
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                }}
               />
             </Grid>
             <Grid item xs={6}>

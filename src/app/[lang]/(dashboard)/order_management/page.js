@@ -2,9 +2,9 @@
 import Grid from "@mui/material/Grid";
 
 // Component Imports
-import Component from "@/views/apps/quotation/products_list/component";
+import AddCard from "@/views/apps/order";
 
-const ProductsList = async () => {
+const OrderManagement = async () => {
   // Vars
   const now = new Date();
   const currentMonth = now.toLocaleString("default", { month: "short" });
@@ -138,10 +138,10 @@ const ProductsList = async () => {
   return (
     <Grid container>
       <Grid item xs={12} md={12}>
-        <Component resData={data} />
+        <AddCard resData={data} />
       </Grid>
     </Grid>
   );
 };
 
-export default ProductsList;
+export default OrderManagement;

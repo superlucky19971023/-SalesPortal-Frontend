@@ -2,9 +2,9 @@
 import Grid from "@mui/material/Grid";
 
 // Component Imports
-import Component from "@/views/apps/quotation/products_list/component";
+import Customers from "@/views/apps/customers/all_customers";
 
-const ProductsList = async () => {
+const CustomersManagement = async () => {
   // Vars
   const now = new Date();
   const currentMonth = now.toLocaleString("default", { month: "short" });
@@ -17,11 +17,11 @@ const ProductsList = async () => {
       companyEmail: "don85@johnson.com",
       country: "USA",
       contact: "(616) 865-4180",
-      name: "Door of shop in Mendez Plains",
+      name: "Akame A",
       total: 100,
       avatarColor: "primary",
       invoiceStatus: "Paid",
-      url: '/images/illustrations/quotation/1.png',
+      avatar: "/images/avatars/1.png",
       balance: "$724",
       dueDate: `23 ${currentMonth} ${now.getFullYear()}`,
     },
@@ -33,9 +33,9 @@ const ProductsList = async () => {
       companyEmail: "brenda49@taylor.info",
       country: "Haiti",
       contact: "(226) 204-8287",
-      name: "Lexus Car",
+      name: "Beddy B",
       total: 100,
-      url: '/images/illustrations/quotation/2.png',
+      avatar: "/images/avatars/2.png",
       invoiceStatus: "Downloaded",
       balance: 0,
       dueDate: `15 ${currentMonth} ${now.getFullYear()}`,
@@ -48,11 +48,11 @@ const ProductsList = async () => {
       companyEmail: "don85@johnson.com",
       country: "USA",
       contact: "(616) 865-4180",
-      name: "Door of shop in Mendez Plains",
+      name: "Critel C",
       total: 100,
       avatarColor: "primary",
       invoiceStatus: "Paid",
-      url: '/images/illustrations/quotation/3.png',
+      avatar: "/images/avatars/3.png",
       balance: "$724",
       dueDate: `23 ${currentMonth} ${now.getFullYear()}`,
     },
@@ -64,9 +64,9 @@ const ProductsList = async () => {
       companyEmail: "brenda49@taylor.info",
       country: "Haiti",
       contact: "(226) 204-8287",
-      name: "Lexus Car",
+      name: "Decuma D",
       total: 100,
-      url: '/images/illustrations/quotation/4.png',
+      avatar: "/images/avatars/4.png",
       invoiceStatus: "Downloaded",
       balance: 0,
       dueDate: `15 ${currentMonth} ${now.getFullYear()}`,
@@ -79,11 +79,11 @@ const ProductsList = async () => {
       companyEmail: "don85@johnson.com",
       country: "USA",
       contact: "(616) 865-4180",
-      name: "Door of shop in Mendez Plains",
+      name: "Eduras E",
       total: 100,
       avatarColor: "primary",
       invoiceStatus: "Paid",
-      url: '/images/illustrations/quotation/5.png',
+      avatar: "/images/avatars/5.png",
       balance: "$724",
       dueDate: `23 ${currentMonth} ${now.getFullYear()}`,
     },
@@ -95,9 +95,9 @@ const ProductsList = async () => {
       companyEmail: "brenda49@taylor.info",
       country: "Haiti",
       contact: "(226) 204-8287",
-      name: "Lexus Car",
+      name: "Feccy F",
       total: 100,
-      url: '/images/illustrations/quotation/6.png',
+      avatar: "/images/avatars/6.png",
       invoiceStatus: "Downloaded",
       balance: 0,
       dueDate: `15 ${currentMonth} ${now.getFullYear()}`,
@@ -110,11 +110,11 @@ const ProductsList = async () => {
       companyEmail: "don85@johnson.com",
       country: "USA",
       contact: "(616) 865-4180",
-      name: "Door of shop in Mendez Plains",
+      name: "Gale G",
       total: 100,
       avatarColor: "primary",
       invoiceStatus: "Paid",
-      url: '/images/illustrations/quotation/7.png',
+      avatar: "/images/avatars/7.png",
       balance: "$724",
       dueDate: `23 ${currentMonth} ${now.getFullYear()}`,
     },
@@ -126,9 +126,9 @@ const ProductsList = async () => {
       companyEmail: "brenda49@taylor.info",
       country: "Haiti",
       contact: "(226) 204-8287",
-      name: "Lexus Car",
+      name: "Hula H",
       total: 100,
-      url: '/images/illustrations/quotation/8.png',
+      avatar: "/images/avatars/8.png",
       invoiceStatus: "Downloaded",
       balance: 0,
       dueDate: `15 ${currentMonth} ${now.getFullYear()}`,
@@ -138,10 +138,10 @@ const ProductsList = async () => {
   return (
     <Grid container>
       <Grid item xs={12} md={12}>
-        <Component resData={data} />
+        <Customers resData={data} />
       </Grid>
     </Grid>
   );
 };
 
-export default ProductsList;
+export default CustomersManagement;

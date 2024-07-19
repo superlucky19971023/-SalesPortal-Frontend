@@ -17,7 +17,6 @@ import Stepper from '@mui/material/Stepper'
 import classnames from 'classnames'
 
 // Component Imports
-import Billing from './Billing'
 import CustomAvatar from '@core/components/mui/Avatar'
 import Details from './Details'
 import DialogCloseButton from '../DialogCloseButton'
@@ -31,29 +30,24 @@ import StepperWrapper from '@core/styles/stepper'
 const steps = [
   {
     icon: 'tabler-file-text',
-    title: 'Details',
+    title: 'Send for Authorization',
     subtitle: 'Enter Details'
   },
   {
     icon: 'tabler-id',
-    title: 'FrameWorks',
-    subtitle: 'Select Framework',
+    title: 'Create Contract',
+    subtitle: 'Enter Details',
     active: true
   },
   {
     icon: 'tabler-database',
-    title: 'Database',
-    subtitle: 'Select Database'
+    title: 'Edit Order Status',
+    subtitle: 'Enter Details'
   },
   {
     icon: 'tabler-credit-card',
-    title: 'Billing',
-    subtitle: 'Payment Details'
-  },
-  {
-    icon: 'tabler-check',
-    title: 'Submit',
-    subtitle: 'Submit'
+    title: 'Cancel order',
+    subtitle: 'Enter Details'
   }
 ]
 
@@ -72,8 +66,7 @@ const renderStepCount = (activeStep, isLastStep, handleNext, handlePrev) => {
         : activeStep === 2
           ? Database
           : activeStep === 3
-            ? Billing
-            : Submit
+            && Submit
 
   return <Tag activeStep={activeStep} handleNext={handleNext} handlePrev={handlePrev} isLastStep={isLastStep} />
 }
@@ -119,9 +112,9 @@ const CreateApp = ({ open, setOpen }) => {
         <i className='tabler-x' />
       </DialogCloseButton>
       <DialogTitle variant='h4' className='flex gap-2 flex-col text-center sm:pbs-16 sm:pbe-6 sm:pli-16'>
-        Create App
+        Create New Order
         <Typography component='span' className='flex flex-col text-center'>
-          Provide data with this form to create your app.
+          Provide data with this form to create new order.
         </Typography>
       </DialogTitle>
       <DialogContent className='pbs-0 sm:pli-16 sm:pbe-16'>

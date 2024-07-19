@@ -23,7 +23,7 @@ import Stack from "@mui/material/Stack";
 import classnames from "classnames";
 
 // Component Imports
-import { initialFormData } from "./AddCustomerDrawer";
+import AddCustomerDrawer, { initialFormData } from "./AddCustomerDrawer";
 import Logo from "@components/layout/shared/Logo";
 import CustomTextField from "@core/components/mui/TextField";
 import { TextField } from "@mui/material";
@@ -43,6 +43,7 @@ const style = {
 
 const AddAction = ({ resData }) => {
   // States
+  const [open, setOpen] = useState(false);
   const [count, setCount] = useState(1);
   const [selectData, setSelectData] = useState(null);
   const [formData, setFormData] = useState(initialFormData);
@@ -56,16 +57,14 @@ const AddAction = ({ resData }) => {
   const isBelowMdScreen = useMediaQuery((theme) =>
     theme.breakpoints.down("md")
   );
-  const isBelowSmScreen = useMediaQuery((theme) =>
-    theme.breakpoints.down("sm")
-  );
 
   const onFormSubmit = (data) => {
     setFormData(data);
   };
 
-  const showModal = (url, id) => {
-    setUrl(url);
+  const showModal = (item) => {
+    setSelectData(item);
+    setUrl(item.url);
     setVisibleModal(true);
   };
 
@@ -87,7 +86,7 @@ const AddAction = ({ resData }) => {
                     </div>
                     <div>
                       <Typography color="text.primary">
-                        This is field of favorites
+                        This is field of product details
                       </Typography>
                     </div>
                   </div>
@@ -163,7 +162,7 @@ const AddAction = ({ resData }) => {
                     >
                       <img
                         src={item.url}
-                        onClick={() => showModal(item.url, item.id)}
+                        onClick={() => showModal(item)}
                         style={{
                           cursor: "pointer",
                         }}
@@ -214,6 +213,11 @@ const AddAction = ({ resData }) => {
           </Grid>
         </CardContent>
       </Card>
+      <AddCustomerDrawer
+        open={open}
+        setOpen={setOpen}
+        onFormSubmit={onFormSubmit}
+      />
       <Modal
         open={modalVisible}
         onClose={closeModal}
@@ -223,54 +227,21 @@ const AddAction = ({ resData }) => {
         <Box sx={{ ...style, width: 1200 }}>
           <Grid
             container
-            spacing={6}
-            style={{ justifyContent: "center", alignItems: "center" }}
+            spacing={4}
           >
-            <Grid
-              item
-              xs={6}
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
+            <Grid item xs={6} style={{ display: 'flex', justifyContent: "center", alignItems: "center" }}>
               <img
                 src={url}
                 className="object-contain bs-[300px] md:bs-[350px] lg:bs-[400px] mbs-10 md:mbs-14 lg:mbs-20"
                 style={{
                   display: "flex",
-                  justifyContent: "center",
+                  justifyContent: "center"
                 }}
               />
             </Grid>
-            <Grid item xs={6}>
+            <Grid item xs={6} style={{ display: 'flex', justifyContent: "center", alignItems: "center" }}>
               <div className="flex justify-between flex-col gap-4 flex-wrap sm:flex-row">
                 <div className="flex flex-col gap-4">
-                  <Typography className="font-medium" color="text.primary">
-                    Select Customer:
-                  </Typography>
-                  <CustomTextField
-                    select
-                    className={classnames("min-is-[220px]", {
-                      "is-1/2": isBelowSmScreen,
-                    })}
-                    value={selectData?.id || ""}
-                    onChange={(e) => {
-                      setFormData({});
-                      setSelectData(
-                        resData
-                          .slice(0, 5)
-                          .filter((item) => item.id === e.target.value)[0]
-                      );
-                    }}
-                  >
-                    {resData.slice(0, 5).map((item, index) => (
-                      <MenuItem key={index} value={item.id}>
-                        {item.name}
-                      </MenuItem>
-                    ))}
-                  </CustomTextField>
                   {selectData?.id ? (
                     <div>
                       <Typography>{selectData?.name}</Typography>
@@ -290,29 +261,6 @@ const AddAction = ({ resData }) => {
                   )}
                 </div>
               </div>{" "}
-              <div className="flex justify-between flex-col gap-4 flex-wrap sm:flex-row mt-4">
-                <div className="flex flex-col gap-4">
-                  <Typography className="font-medium" color="text.primary">
-                    Send Customer:
-                  </Typography>
-                  <TextField
-                    id="outlined-multiline-static"
-                    label="Content"
-                    multiline
-                    rows={4}
-                    placeholder="Input the content"
-                  />
-                </div>
-              </div>{" "}
-              <div style={{ display: "flex", justifyContent: "flex-end" }}>
-                <Button onClick={() => window.print()} className="mt-4">
-                  <i className="tabler-printer" />
-                  Print
-                </Button>
-                <Button onClick={() => setVisibleModal(false)} className="mt-4">
-                  <i className="tabler-send" /> Send
-                </Button>
-              </div>
             </Grid>
           </Grid>
         </Box>
